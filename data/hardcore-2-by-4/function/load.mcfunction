@@ -9,6 +9,9 @@ bossbar set minecraft:2by4bar style notched_10
 
 scoreboard objectives add 2by4-playtime minecraft.custom:minecraft.play_time
 scoreboard objectives add 2by4-leave minecraft.custom:minecraft.leave_game
+scoreboard objectives add 2by4-command-start-game trigger
+scoreboard objectives add 2by4-command-settings trigger
+scoreboard objectives add 2by4-command-credits trigger
 
 scoreboard objectives add 2by4-control dummy
 execute unless score game-setup 2by4-control matches -2147483648..2147483647 run scoreboard players set game-setup 2by4-control 1
