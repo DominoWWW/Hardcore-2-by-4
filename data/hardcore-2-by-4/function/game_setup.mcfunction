@@ -13,9 +13,42 @@ bossbar set minecraft:2by4bar players @a
 bossbar set minecraft:2by4bar visible true
 
 #enable triggers
-scoreboard players enable @a 2by4-command-start-game
+scoreboard players enable @a 2by4-command-start
+scoreboard players enable @a 2by4-command-meny
 scoreboard players enable @a 2by4-command-settings
+scoreboard players enable @a 2by4-command-settings2
+scoreboard players enable @a 2by4-command-settings3
 scoreboard players enable @a 2by4-command-credits
+
+#enable setting triggers
+scoreboard players enable @a 2by4-command-setting-scale
+scoreboard players enable @a 2by4-command-setting-step-hight
+scoreboard players enable @a 2by4-command-setting-block-range
+scoreboard players enable @a 2by4-command-setting-entity-range
+scoreboard players enable @a 2by4-command-setting-safe-fall-distance
+scoreboard players enable @a 2by4-command-setting-fall-damage-multiplier
+
+#game meny when leaving
+execute as @a if score @s 2by4-leave matches 1.. run scoreboard players set @s 2by4-playtime 0
+execute as @a if score @s 2by4-leave matches 1.. run scoreboard players set @s 2by4-leave 0
+
+#if click
+execute as @a if score @s 2by4-command-setting-scale matches 1.. run scoreboard players set @s 2by4-command-setting-click 1
+execute as @a if score @s 2by4-command-setting-step-hight matches 1.. run scoreboard players set @s 2by4-command-setting-click 1
+execute as @a if score @s 2by4-command-setting-block-range matches 1.. run scoreboard players set @s 2by4-command-setting-click 1
+execute as @a if score @s 2by4-command-setting-entity-range matches 1.. run scoreboard players set @s 2by4-command-setting-click 1
+execute as @a if score @s 2by4-command-setting-safe-fall-distance matches 1.. run scoreboard players set @s 2by4-command-setting-click 1
+execute as @a if score @s 2by4-command-setting-fall-damage-multiplier matches 1.. run scoreboard players set @s 2by4-command-setting-click 1
+execute as @a if score @s 2by4-command-setting-click matches 1.. run function hardcore-2-by-4:click
+
+
+#commands
+execute as @a if score @s 2by4-command-meny matches 1.. run function hardcore-2-by-4:game_meny
+execute as @a if score @s 2by4-command-settings matches 1.. run function hardcore-2-by-4:game_settings
+execute as @a if score @s 2by4-command-settings2 matches 1.. run function hardcore-2-by-4:game_settings2
+execute as @a if score @s 2by4-command-settings3 matches 1.. run function hardcore-2-by-4:game_settings3
+execute as @a if score @s 2by4-command-credits matches 1.. run function hardcore-2-by-4:game_credits
+execute as @a if score @s 2by4-command-start matches 1.. run function hardcore-2-by-4:game_start
 
 # Welcome
 execute as @a if score @s 2by4-playtime matches 100 run title @s times 20 100 20
